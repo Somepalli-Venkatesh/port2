@@ -38,7 +38,7 @@ const Skills = () => {
 
   const sectionStyle = {
     padding: "4rem 2rem",
-    background: "from-black",
+    background: "black",
     color: "#fff",
     textAlign: "center",
     position: "relative",

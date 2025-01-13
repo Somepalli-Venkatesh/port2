@@ -7,21 +7,20 @@ import Project from "./components/Project";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import Bot from "./components/Bot";
-import ScrollToTopButton from "./components/ScrolltoTop";
+
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <Bot />
+     
       <Hero />
       <About />
       <Skills />
       
       <Project />
       <Contact />
-      <ScrollToTopButton/>
+      
       <Footer />
     </div>
   );

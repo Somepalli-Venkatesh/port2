@@ -1,60 +1,147 @@
-import React, { useEffect } from 'react';
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import ProjectsData from "./ProjectsData";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination, Autoplay } from "swiper/modules";
 
-const Projects = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+// Project Images
+import Connectify from "../assets/images/Connectify.png";
+import invigilation from "../assets/images/Invigilation.png";
+import Gemini from "../assets/images/Gemini.png";
+import Youtube from "../assets/images/Youtube.png";
+import Ai_Sumz from "../assets/images/Ai_Sumz.png";
+
+const Project = () => {
+  const projects = [
+    {
+      img: Connectify,
+      name: "Connectify",
+      github_link: "https://github.com/Somepalli-Venkatesh/Connectify",
+      live_link: "https://connectify-m2ma.vercel.app/",
+      tech_stack: ["Next js","stream","Tailwind css"],
+    },
+    {
+      img: invigilation,
+      name: "Invigilation",
+      github_link: "https://github.com/Somepalli-Venkatesh/Invigilation",
+      live_link: "https://invigilation-ss44.vercel.app/",
+      tech_stack: ["React JS", "Mongodb", "express js","Node.js"],
+    },
+    {
+      img: Gemini,
+      name: "Gemini Clone",
+      github_link: "https://github.com/Somepalli-Venkatesh/Gemini",
+      live_link: "https://gemini-ivory-five.vercel.app/",
+      tech_stack: ["React Js","Gemini API","HTML"],
+    },
+    {
+      img: Youtube,
+      name: "Youtube Clone",
+      github_link: "https://github.com/Somepalli-Venkatesh/project1",
+      live_link: "https://project1-gilt-tau.vercel.app/",
+      tech_stack: ["React", "YouTube API", "Redux Toolkit"],
+    },
+    {
+      img: Ai_Sumz,
+      name: "Ai_Sumz",
+      github_link: "https://github.com/Somepalli-Venkatesh/ai_sumz",
+      tech_stack: ["React", "OpenAI API", "Redux Toolkit"],
+    },
+  ];
 
   return (
-    <section className=" body-font  min-h-screen">
-      <div className="container mx-auto px-5 py-12">
-        <div id="projects" className="text-center mb-12">
-          <h1 className="sm:text-5xl text-3xl font-medium title-font mb-3 text-gray-900">
-           <span className='text-white'>MY</span> <span className='text-cyan-700'> Projects</span>
-          </h1>
-          <p data-aos="zoom-in" data-aos-duration="1000" data-aos-once="false" className="text-lg font-medium leading-relaxed text-orange-600">
-            My Works
-          </p>
-        </div>
-        <div className="grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-          {ProjectsData.reverse().map((project) => (
-            <div
-              key={project.id}
-              data-aos="zoom-in-up"
-              data-aos-duration="1000"
-              data-aos-once="false"
-              className="relative overflow-hidden rounded-xl shadow-xl group h-60 w-max-width"  // Adjusted height
-            >
-              <img src={project.image} alt={project.name} className=" object-center rounded-xl w-full h-60" />
-              <div className="absolute inset-0 bg-yellow-500 bg-opacity-90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center p-2">
-                <h3 className="text-2xl font-medium text-gray-900 mb-2">{project.name}</h3>
-                <p className="text-20px text-center text-gray-900 mb-4">{project.description}</p>
-                <div className="flex gap-3 mb-4">
-                  {project.icons.map((Icon, index) => (
-                    <div className="rounded-full bg-purple-700 p-2" key={index}>
-                      <Icon className="text-white text-3xl" />
+    <section id="projects" className="py-20 text-white bg-black">
+      <div className="text-center">
+        <h3 className="text-4xl font-semibold">
+          My <span className="text-orange-500">Projects</span>
+        </h3>
+        <p className="text-yellow-400 mt-3 text-lg">My Works</p>
+      </div>
+      <br />
+      <div className="flex max-w-6xl gap-6 px-5 mx-auto items-center relative">
+        <div className="lg:w-12/13 w-full h-full">
+          <Swiper
+            slidesPerView={1.2}
+            spaceBetween={20}
+            breakpoints={{
+              768: {
+                slidesPerView: 2,
+              },
+            }}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination, Autoplay]}
+          >
+            {projects.map((project_info, i) => (
+              <SwiperSlide key={i}>
+                <div className="h-fit w-full p-4 bg-gradient-to-br from-black via-red-800 to-red-900 rounded-xl shadow-xl transform transition duration-500 hover:scale-105 hover:shadow-2xl relative overflow-hidden group">
+                  {/* Image */}
+                  <div>
+                    <img
+                      src={project_info.img}
+                      alt={project_info.name}
+                      className="rounded-lg w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="relative z-10 p-6 flex flex-col justify-between h-full">
+                    <h3 className="text-2xl font-semibold my-4 text-white">
+                      {project_info.name}
+                    </h3>
+
+                    {/* Tech Stack - Initially Hidden, Reveals on Hover */}
+                    <div className="tech-stack opacity-0 visibility-hidden group-hover:opacity-100 group-hover:visibility-visible mt-2 text-sm transition-all duration-300 ease-in-out">
+                      <p className="font-semibold text-green-400 mb-2">
+                        Tech Stack:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project_info.tech_stack.map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="bg-gradient-to-r from-green-400 to-green-600 text-white px-3 py-1 rounded-full text-xs shadow-md transition-transform duration-300 transform hover:scale-110"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  ))}
+
+                    {/* Links */}
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href={project_info.github_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white bg-orange-500 px-4 py-2 rounded-md shadow-lg transition-transform duration-300 transform hover:scale-110 hover:bg-orange-600"
+                      >
+                        <i className="fab fa-github mr-2"></i> Github
+                      </a>
+                      {project_info.live_link && (
+                        <a
+                          href={project_info.live_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white bg-orange-500 px-4 py-2 rounded-md shadow-lg transition-transform duration-300 transform hover:scale-110 hover:bg-orange-600"
+                        >
+                          <i className="fas fa-external-link-alt mr-2"></i> Live
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div className="flex gap-3">
-                  <a className="bg-green-500 text-white p-2 rounded-full hover:bg-green-600 transition-colors duration-300" href={project.github} target="_blank" rel="noopener noreferrer">
-                    <FaGithub className="text-2xl" />
-                  </a>
-                  <a className="bg-gray-900 text-white p-2 rounded-full hover:bg-gray-700 transition-colors duration-300" href={project.demo} target="_blank" rel="noopener noreferrer">
-                    <FaExternalLinkAlt className="text-2xl" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
   );
-}
+};
 
-export default Projects;
+export default Project;
