@@ -1,81 +1,134 @@
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import htmlImage from '../assets/images/html.png';
-import cssImage from '../assets/images/css.png';
-import react from '../assets/images/react.png';
-import express from '../assets/images/express.png';
-import tailwind from '../assets/images/tailwind.png';
-
-import java from '../assets/images/java.png';
-import python from '../assets/images/python.png';
-import git from '../assets/images/git.png';
-import github from '../assets/images/github.png';
-import javascript from '../assets/images/javascript.png';
-import node from '../assets/images/node.png';
-import postman from '../assets/images/postman.png';
-import mysql from '../assets/images/mysql.png';
-import mongodb from '../assets/images/mongodb.png';
-
-const skills = [
-  { id: '1', name: 'HTML', image: htmlImage },
-  { id: '2', name: 'CSS', image: cssImage },
-  { id: '3', name: 'React', image: react },
-  { id: '4', name: 'Express', image: express },
-  { id: '5', name: 'Tailwind', image: tailwind },
-  { id: '6', name: 'Java', image: java },
-  { id: '7', name: 'Python', image: python },
-  { id: '8', name: 'git', image: git },
-  { id: '9', name: 'Github', image: github },
-  { id: '10', name: 'MySQL', image: mysql },
-  { id: '11', name: 'Postman', image: postman },
-  { id: '12', name: 'Node', image: node },
-  { id: '13', name: 'MongoDB', image: mongodb },
-  { id: '14', name: 'JavaScript', image: javascript },
-];
+import React from "react";
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiReact,
+  SiExpress,
+  SiGithub,
+  SiNodedotjs,
+  SiPython,
+  SiMysql,
+  SiGit,
+  SiMongodb,
+  SiC,
+  SiRedux
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
+import postmanImage from "../assets/images/postman.png";
 
 const Skills = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  const skills = [
+    { name: "HTML", logo: <SiHtml5 />, color: "#E34F26" },
+    { name: "CSS", logo: <SiCss3 />, color: "#1572B6" },
+    { name: "JavaScript", logo: <SiJavascript />, color: "#F7DF1E" },
+    { name: "React", logo: <SiReact />, color: "#61DAFB" },
+    { name: "Redux Toolkit", logo: <SiRedux />, color: "#764ABC" },
+    { name: "Express JS", logo: <SiExpress />, color: "#110011" },
+    { name: "GitHub", logo: <SiGithub />, color: "#181717" },
+    { name: "Node JS", logo: <SiNodedotjs />, color: "#339933" },
+    { name: "Java", logo: <FaJava />, color: "#007396" },
+    { name: "Python", logo: <SiPython />, color: "#3776AB" },
+    { name: "MySQL", logo: <SiMysql />, color: "#4479A1" },
+    { name: "Git", logo: <SiGit />, color: "#F05032" },
+    { name: "MongoDB", logo: <SiMongodb />, color: "#47A248" },
+    { name: "C", logo: <SiC />, color: "#A8B9CC" },
+   { name: "Postman", logo: <img src={postmanImage} alt="Postman" style={{ width: "80px", height: "80px" }} />, color: "#FF3C37" },
+  ];
+
+  const sectionStyle = {
+    padding: "4rem 2rem",
+    background: "from-black",
+    color: "#fff",
+    textAlign: "center",
+    position: "relative",
+    overflow: "hidden",
+  };
+
+  const headerStyle = {
+    marginBottom: "3rem",
+  };
+
+  const titleStyle = {
+    fontSize: "2.5rem",
+    fontWeight: "700",
+    marginBottom: "0.5rem",
+  };
+
+  const highlightStyle = {
+    color: "#ffa500",
+  };
+
+  const subtitleStyle = {
+    fontSize: "1.2rem",
+    color: "#ccc",
+  };
+
+  const gridStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: "2rem",
+    padding: "0 1rem",
+  };
+
+  const cardStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#1e1e1e",
+    border: "2px solid transparent",
+    borderRadius: "10px",
+    padding: "1.5rem",
+    transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
+  };
+
+  const iconStyle = {
+    width: "80px",
+    height: "80px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "50%",
+    marginBottom: "1rem",
+    color: "#fff",
+    fontSize: "2.5rem",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
+  };
+
+  const nameStyle = {
+    fontSize: "1.1rem",
+    fontWeight: "500",
+    textTransform: "uppercase",
+    color: "#fff",
+  };
 
   return (
-    <section id="skills" className="py-10  text-white">
-      <div className="text-center mt-8">
-        <h3 className="text-4xl font-semibold">
-          My <span className="text-cyan-600">Skills</span>
+    <section id="skills" style={sectionStyle}>
+      <div style={headerStyle}>
+        <h3 style={titleStyle}>
+          My <span style={highlightStyle}>Skills</span>
         </h3>
-        <p
-          data-aos="zoom-in"
-          data-aos-duration="1000"
-          data-aos-once="false"
-          className="text-gray-400 mt-3 text-lg"
-        >
-          My Technical Expertise
-        </p>
+        <p style={subtitleStyle}>Here are my technical skills</p>
       </div>
-      <div
-        data-aos="zoom-in"
-        data-aos-duration="1000"
-        data-aos-once="false"
-        className="flex items-center justify-center mt-12 gap-5 flex-wrap max-w-6xl mx-auto px-4 md:px-8"
-      >
-        {skills.map((skill) => (
+      <div style={gridStyle}>
+        {skills.map((skill, index) => (
           <div
-            key={skill.id}
-            className="skill-item border-2 group border-cyan-500 relative w-[45%] md:w-[22%] lg:w-[18%] bg-gray-700 p-4 rounded-xl flex flex-col items-center justify-center text-center mb-6"
-            data-aos="zoom-in-up"
-            data-aos-duration="1500"
-            data-aos-once="false"
+            key={index}
+            style={{
+              ...cardStyle,
+              borderColor: skill.color,
+            }}
           >
-            <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-full overflow-hidden mb-4">
-              <img
-                src={skill.image}
-                alt={skill.name}
-                className="w-full h-full object-contain transition duration-700 hover:scale-125"
-              />
+            <div
+              style={{
+                ...iconStyle,
+                background: skill.color,
+              }}
+            >
+              {skill.logo}
             </div>
-            <p className="text-lg">{skill.name}</p>
+            <h4 style={nameStyle}>{skill.name}</h4>
           </div>
         ))}
       </div>
