@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 
 import Type from "./Type";
-import programmer from "../assets/images/programmer.png";
+import programmer from "../assets/images/programmer1.png";
 
 const socialMediaLinks = [
   "https://www.instagram.com/venkatesh__somepalli?utm_source=qr&igsh=ZjUyam5jdGM5aTFm ",
