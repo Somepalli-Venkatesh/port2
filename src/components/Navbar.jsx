@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-scroll"; // For smooth scrolling
-import letterV from "../assets/images/letterV.png"
+import letterV from "../assets/letterV.png"
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
   const [open, setOpen] = useState(false);
