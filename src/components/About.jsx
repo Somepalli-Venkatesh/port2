@@ -1,46 +1,86 @@
-import React from "react";
-import aboutImg from "../assets/images/abo.png";
+import React, { useState, useEffect } from "react";
+import { FaCheckCircle } from "react-icons/fa";
+
 const About = () => {
   const info = [
-    { text: "Years experience", count: "04" },
-    { text: "Completed Projects", count: "24" },
-    { text: "Companies Work", count: "06" },
+    { text: "Completed Projects", count: 5, icon: <FaCheckCircle className="text-4xl text-orange-400" /> },
   ];
+
+  const googleDriveLink = "https://drive.google.com/file/d/1qUXS_A0jIsu2ny0lPqhPz0-f4IMW2Thi/view?usp=sharing";
+
+  const navigateToResume = () => {
+    window.open(googleDriveLink, "_blank");
+  };
+
+  const Counter = ({ end }) => {
+    const [value, setValue] = useState(0);
+
+    useEffect(() => {
+      let start = 0;
+      const duration = 2000; // Animation duration in milliseconds
+      const increment = end / (duration / 10);
+
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          setValue(end);
+          clearInterval(timer);
+        } else {
+          setValue(Math.ceil(start));
+        }
+      }, 5);
+
+      return () => clearInterval(timer);
+    }, [end]);
+
+    return <span>{value}</span>;
+  };
+
   return (
-    <section id="about" className="py-10 text-white">
-      <div className="text-center mt-8">
-        <h3 className="text-4xl font-semibold">
-          About <span className="text-cyan-600">Me</span>
+    <section
+      id="about"
+      className="py-20 bg-gradient-to-br from-black to-gray-900 text-white relative overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-orange-400 opacity-30 pointer-events-none"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-8 text-center">
+        <h3 className="text-6xl font-extrabold tracking-wide mb-6">
+          About <span className="text-orange-500">Me</span>
         </h3>
-        <p className="text-gray-400 my-3 text-lg">My introduction</p>
-        <div className="flex md:flex-row flex-col-reverse items-center md:gap-6 gap-12 px-10 max-w-6xl mx-auto">
-          <div className="p-2">
-            <div className="text-gray-300 my-3">
-              <p className="text-justify leading-7 w-11/12 mx-auto">
-              I'm an enthusiastic and dedicated individual who combines hard work with smart strategies. My adaptable nature allows me to fit into any environment seamlessly. I thrive on continuous learning and creative problem-solving, always seeking to expand my knowledge and skills.<br/><br/>
+        <p className="text-lg text-gray-300 mb-12">
+          Discover my journey and the milestones I've achieved.
+        </p>
 
-
-
-              I excel in uniting people and fostering collaboration, even in challenging situations. My leadership qualities and effective communication skills enable me to build strong relationships and convey ideas clearly. I believe in teamwork and strive to create a positive, productive atmosphere.<br/><br/>
-
-              As a computer science student, I have strong technical skills in full-stack development, including HTML, CSS, React, Node.js, MongoDB, and Express. My passion for technology drives me to build impactful solutions, and I am eager to contribute to innovative projects with my expertise and collaborative spirit.
-              </p>
-              
+        <div className="flex flex-wrap justify-center gap-16 items-start">
+          <div className="w-full md:w-5/12 bg-gray-800 bg-opacity-30 p-8 rounded-2xl shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105">
+            <p className="text-justify text-gray-300 leading-8 text-lg">
+              I am currently pursuing a B.Tech at VVIT. With a strong passion for web development, I specialize in crafting dynamic, intuitive, and scalable user interfaces. My experience spans JavaScript, TypeScript, React.js, Angular, Firebase, and GitHub, allowing me to adapt seamlessly to various project requirements.
               <br />
-              <br />
-              <a href="./src/assets/Sathwik_resume.pdf" download>
-                <button className="btn-primary">Download CV</button>
-              </a>
-            </div>
+              I am eager to learn, solve complex challenges, and contribute to impactful projects while delivering exceptional user experiences.
+            </p>
           </div>
-          <div className="flex-1 md:mt-0 mt-6 flex justify-center items-center">
-            <div className="lg:w-96 h-50 relative sm:w-10/12 w-11/12 max-w-sm aboutImg ">
-              <img
-                src={aboutImg}
-                alt=""
-                className="w-50 object-cover bg-cyan-600 rounded-xl"
-              />
+
+          <div className="flex flex-col items-center justify-between">
+            <div className="flex gap-12">
+              {info.map((content) => (
+                <div
+                  key={content.text}
+                  className="bg-gray-800 bg-opacity-40 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transform transition-transform duration-300 hover:scale-105"
+                >
+                  {content.icon}
+                  <h3 className="text-5xl font-bold text-orange-400 mt-4">
+                    <Counter end={content.count} />
+                    {content.count > 0 && <span className="text-orange-500">+</span>}
+                  </h3>
+                  <p className="text-gray-300 mt-2">{content.text}</p>
+                </div>
+              ))}
             </div>
+            <button
+              className="mt-12 py-3 px-10 bg-gradient-to-r from-orange-500 to-purple-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105 hover:translate-y-1"
+              onClick={navigateToResume}
+            >
+              View Resume
+            </button>
           </div>
         </div>
       </div>
