@@ -39,7 +39,7 @@ const Navbar = () => {
         >
           <ul className="flex items-center gap-1 py-2 text-lg">
             {menuLinks.map((menu, i) => (
-              <li key={i} className="px-6 hover:text-cyan-600">
+              <li key={i} className="px-6 hover:text-orange-600">
                 <a href={menu.link}>{menu.name}</a>
               </li>
             ))}
@@ -50,7 +50,7 @@ const Navbar = () => {
                 href="https://drive.google.com/file/d/1qUXS_A0jIsu2ny0lPqhPz0-f4IMW2Thi/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-cyan-600 rounded-md shadow-md transition-transform duration-300 hover:bg-cyan-700 hover:scale-105"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-orange-500 rounded-md shadow-md transition-transform duration-300 hover:bg-orange-700 hover:scale-105"
               >
                 Resume
               </a>
@@ -91,7 +91,7 @@ const Navbar = () => {
                 href="https://drive.google.com/file/d/1qUXS_A0jIsu2ny0lPqhPz0-f4IMW2Thi/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block px-4 py-2 text-center text-sm font-semibold text-white bg-cyan-600 rounded-md shadow-md transition-transform duration-300 hover:bg-cyan-700 hover:scale-105"
+                className="block px-4 py-2 text-center text-sm font-semibold text-white bg-orange-500 rounded-md shadow-md transition-transform duration-300 hover:bg-ornage-700 hover:scale-105"
               >
                 Resume
               </a>
