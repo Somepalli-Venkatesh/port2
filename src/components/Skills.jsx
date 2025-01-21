@@ -12,7 +12,7 @@ import {
   SiGit,
   SiMongodb,
   SiC,
-  SiRedux
+  SiRedux,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import postmanImage from "../assets/images/postman.png";
@@ -33,102 +33,43 @@ const Skills = () => {
     { name: "Git", logo: <SiGit />, color: "#F05032" },
     { name: "MongoDB", logo: <SiMongodb />, color: "#47A248" },
     { name: "C", logo: <SiC />, color: "#A8B9CC" },
-   { name: "Postman", logo: <img src={postmanImage} alt="Postman" style={{ width: "80px", height: "80px" }} />, color: "#FF3C37" },
+    {
+      name: "Postman",
+      logo: (
+        <img
+          src={postmanImage}
+          alt="Postman"
+          style={{ width: "80px", height: "80px" }}
+        />
+      ),
+      color: "#FF3C37",
+    },
   ];
 
-  const sectionStyle = {
-    padding: "4rem 2rem",
-    background: "black",
-    color: "#fff",
-    textAlign: "center",
-    position: "relative",
-    overflow: "hidden",
-  };
-
-  const headerStyle = {
-    marginBottom: "3rem",
-  };
-
-  const titleStyle = {
-    fontSize: "2.5rem",
-    fontWeight: "700",
-    marginBottom: "0.5rem",
-  };
-
-  const highlightStyle = {
-    color: "#ffa500",
-  };
-
-  const subtitleStyle = {
-    fontSize: "1.2rem",
-    color: "#ccc",
-  };
-
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gap: "2rem",
-    padding: "0 1rem",
-  };
-
-  const cardStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "#1e1e1e",
-    border: "2px solid transparent",
-    borderRadius: "10px",
-    padding: "1.5rem",
-    transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
-  };
-
-  const iconStyle = {
-    width: "80px",
-    height: "80px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: "50%",
-    marginBottom: "1rem",
-    color: "#fff",
-    fontSize: "2.5rem",
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
-  };
-
-  const nameStyle = {
-    fontSize: "1.1rem",
-    fontWeight: "500",
-    textTransform: "uppercase",
-    color: "#fff",
-  };
-
   return (
-    <section id="skills" style={sectionStyle}>
-      <div style={headerStyle}>
-        <h3 style={titleStyle}>
-          My <span style={highlightStyle}>Skills</span>
+    <section id="skills" className="py-10 bg-black text-white">
+      <div className="text-center mt-8">
+        <h3 className="text-4xl font-semibold mb-2">
+          My <span className="text-orange-500">Skills</span>
         </h3>
-        <p style={subtitleStyle}>Here are my technical skills</p>
+        <p className="text-gray-400 text-lg">
+          Here are my technical skills
+        </p>
       </div>
-      <div style={gridStyle}>
+      <div className="flex items-center justify-center mt-12 gap-5 flex-wrap max-w-6xl mx-auto px-4 md:px-8">
         {skills.map((skill, index) => (
           <div
             key={index}
-            style={{
-              ...cardStyle,
-              borderColor: skill.color,
-            }}
+            className="border-2 group border-transparent relative w-[45%] md:w-[22%] lg:w-[18%] bg-gray-800 p-4 rounded-lg flex flex-col items-center justify-center text-center transition-transform duration-300 hover:scale-105 hover:border-current"
+            style={{ borderColor: skill.color }}
           >
             <div
-              style={{
-                ...iconStyle,
-                background: skill.color,
-              }}
+              className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-full shadow-lg mb-4"
+              style={{ backgroundColor: skill.color }}
             >
               {skill.logo}
             </div>
-            <h4 style={nameStyle}>{skill.name}</h4>
+            <h4 className="text-lg font-medium uppercase">{skill.name}</h4>
           </div>
         ))}
       </div>

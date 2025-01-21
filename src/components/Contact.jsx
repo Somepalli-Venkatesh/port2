@@ -6,19 +6,22 @@ const Contact = () => {
     { logo: "call-outline", text: "+91 6300223042" },
     {
       logo: "location",
-      text: "Ongole,Andhra Pradesh, India",
+      text: "Ongole, Andhra Pradesh, India",
     },
   ];
 
   return (
-    <section id="contact" className="py-10 px-3 bg-black text-white">
+    <section
+      id="contact"
+      className="py-10 px-3 text-white min-h-screen bg-black"
+    >
       <div className="text-center mt-8">
         <h3 className="text-4xl font-semibold">
           Contact <span className="text-orange-500">Me</span>
         </h3>
         <p className="text-yellow-400 mt-3 text-lg">Get in touch</p>
 
-        <div className="mt-16 flex flex-col md:flex-row gap-10 max-w-5xl mx-auto p-6 bg-gray-900 rounded-lg shadow-lg">
+        <div className="mt-16 flex md:flex-row flex-col gap-9 max-w-5xl bg-gray-900 md:p-8 p-6 rounded-lg mx-auto">
           {/* Form Section */}
           <form className="flex flex-col flex-1 gap-6">
             <input
@@ -42,19 +45,20 @@ const Contact = () => {
           </form>
 
           {/* Contact Information Section */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-7">
             {contact_info.map((contact, i) => (
               <div
                 key={i}
-                className="flex flex-row text-left gap-4 items-center relative transition-all duration-300 p-4 rounded-lg"
+                className="flex flex-row text-left gap-4 flex-wrap items-center"
               >
-                <div className="min-w-[3.5rem] min-h-[3.5rem] flex items-center justify-center text-white bg-orange-500 rounded-full transition-transform duration-300">
+                <div className="min-w-[3.5rem] text-2xl min-h-[3.5rem] flex items-center justify-center text-white bg-orange-500 rounded-full">
                   <ion-icon name={contact.logo}></ion-icon>
                 </div>
-                {/* Text is always visible now */}
-                <p className="md:text-base text-sm break-words text-white">
-                  {contact.text}
-                </p>
+                <div className="flex flex-col items-start">
+                  <p className="md:text-base text-sm break-words">
+                    {contact.text}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
