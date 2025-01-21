@@ -10,16 +10,18 @@ const Navbar = () => {
     { name: "PROJECTS", link: "#projects" },
     { name: "CONTACT", link: "#contact" },
   ];
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       const nav = document.querySelector("nav");
       window.scrollY > 0 ? setSticky(true) : setSticky(false);
     });
   }, []);
+
   return (
     <nav
       className={`fixed w-full left-0 top-0 z-[999] ${
-        sticky ? "bg-white/60  text-gray-900" : "text-white"
+        sticky ? "bg-white/60 text-gray-900" : "text-white"
       }`}
     >
       <div className="flex items-center justify-between">
@@ -28,19 +30,35 @@ const Navbar = () => {
             VENKATESH
           </h4>
         </div>
+
+        {/* Desktop Menu */}
         <div
-          className={` ${
+          className={`${
             sticky ? "md:bg-white/0 bg-white" : "bg-white"
-          } text-gray-900 md:block hidden px-7 py-2 font-medium  rounded-bl-full`}
+          } text-gray-900 md:block hidden px-7 py-2 font-medium rounded-bl-full`}
         >
           <ul className="flex items-center gap-1 py-2 text-lg">
-            {menuLinks?.map((menu, i) => (
+            {menuLinks.map((menu, i) => (
               <li key={i} className="px-6 hover:text-cyan-600">
-                <a href={menu?.link}>{menu?.name}</a>
+                <a href={menu.link}>{menu.name}</a>
               </li>
             ))}
+
+            {/* Resume Button */}
+            <li>
+              <a
+                href="https://drive.google.com/file/d/1qUXS_A0jIsu2ny0lPqhPz0-f4IMW2Thi/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-cyan-600 rounded-md shadow-md transition-transform duration-300 hover:bg-cyan-700 hover:scale-105"
+              >
+                Resume
+              </a>
+            </li>
           </ul>
         </div>
+
+        {/* Mobile Menu Icon */}
         <div
           onClick={() => setOpen(!open)}
           className={`z-[999]  ${
@@ -49,22 +67,35 @@ const Navbar = () => {
         >
           <ion-icon name="menu"></ion-icon>
         </div>
+
+        {/* Mobile Menu */}
         <div
-          className={`md:hidden text-gray-900 absolute w-2/3 h-screen
-      px-7 py-2 font-medium bg-white top-0 duration-300 ${
-        open ? "right-0" : "right-[-100%]"
-      }`}
+          className={`md:hidden text-gray-900 absolute w-2/3 h-screen px-7 py-2 font-medium bg-white top-0 duration-300 ${
+            open ? "right-0" : "right-[-100%]"
+          }`}
         >
           <ul className="flex flex-col justify-center h-full gap-10 py-2 text-lg">
-            {menuLinks?.map((menu, i) => (
+            {menuLinks.map((menu, i) => (
               <li
                 onClick={() => setOpen(false)}
                 key={i}
                 className="px-6 hover:text-cyan-600"
               >
-                <a href={menu?.link}>{menu?.name}</a>
+                <a href={menu.link}>{menu.name}</a>
               </li>
             ))}
+
+            {/* Resume Button in Mobile Menu */}
+            <li>
+              <a
+                href="https://drive.google.com/file/d/1qUXS_A0jIsu2ny0lPqhPz0-f4IMW2Thi/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-2 text-center text-sm font-semibold text-white bg-cyan-600 rounded-md shadow-md transition-transform duration-300 hover:bg-cyan-700 hover:scale-105"
+              >
+                Resume
+              </a>
+            </li>
           </ul>
         </div>
       </div>
