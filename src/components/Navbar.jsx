@@ -66,7 +66,7 @@ const Navbar = () => {
         {/* Mobile Menu Icon */}
         <div
           onClick={() => setOpen(!open)}
-          className={`z-[999] text-2xl sm:text-3xl md:hidden m-5 ${
+          className={`z-[999] text-2xl sm:text-7xl md:hidden m-5 ${
     open ? "text-gray-900" : "text-white"
   }`}
         >
