@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {
   SiHtml5,
   SiCss3,
@@ -46,22 +47,71 @@ const Skills = () => {
     },
   ];
 
+  // Container variants for staggered appearance
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  // Individual skill card variants
+  const skillVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      },
+    },
+    hover: {
+      scale: 1.1,
+      rotate: 5,
+      transition: { duration: 0.3 },
+    },
+  };
+
   return (
     <section id="skills" className="py-10 bg-black text-white">
       <div className="text-center mt-8">
-        <h3 className="text-4xl font-semibold mb-2">
+        <motion.h3
+          className="text-4xl font-semibold mb-2"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           My <span className="text-orange-500">Skills</span>
-        </h3>
-        <p className="text-gray-400 text-lg">
+        </motion.h3>
+        <motion.p
+          className="text-gray-400 text-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
           Here are my technical skills
-        </p>
+        </motion.p>
       </div>
-      <div className="flex items-center justify-center mt-12 gap-5 flex-wrap max-w-6xl mx-auto px-4 md:px-8">
+      <motion.div
+        className="flex items-center justify-center mt-12 gap-5 flex-wrap max-w-6xl mx-auto px-4 md:px-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
         {skills.map((skill, index) => (
-          <div
+          <motion.div
             key={index}
-            className="border-2 group border-transparent relative w-[45%] md:w-[22%] lg:w-[18%] bg-gray-800 p-4 rounded-lg flex flex-col items-center justify-center text-center transition-transform duration-300 hover:scale-105 hover:border-current"
+            className="border-2 group border-transparent relative w-[45%] md:w-[22%] lg:w-[18%] bg-gray-800 p-4 rounded-lg flex flex-col items-center justify-center text-center"
             style={{ borderColor: skill.color }}
+            variants={skillVariants}
+            whileHover="hover"
           >
             <div
               className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-full shadow-lg mb-4"
@@ -70,9 +120,9 @@ const Skills = () => {
               {skill.logo}
             </div>
             <h4 className="text-lg font-medium uppercase">{skill.name}</h4>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

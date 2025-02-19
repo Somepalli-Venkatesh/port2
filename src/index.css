@@ -50,3 +50,26 @@ textarea {
 .btn-primary:hover {
   background-color: #059aad; /* Adjust hover color as needed */
 }
+
+@layer base {
+ 
+
+ 
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-orange-500 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-orange-600;
+  }
+}
